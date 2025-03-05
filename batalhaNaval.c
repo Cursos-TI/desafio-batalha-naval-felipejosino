@@ -23,25 +23,35 @@ int main() {
     }
 
     // Adicionando navio na horizonrtal
-    // tabuleiro[2][3] = 3;
-    // tabuleiro[2][4] = 3;
-    // tabuleiro[2][5] = 3;
-
     for (int i = 3; i < 6; i++)
     {
-        tabuleiro[2][i] = 3;
+        tabuleiro[9][i] = 3;
     }    
 
     // Adicionando navio na vertical
     for (int i = 5; i < 8; i++)
     {
-        tabuleiro[i][7] = 3;
+        tabuleiro[i][9] = 3;
     }   
+
+    // Adicionando navio na diagonal principal
+    for (int i = 0; i < 10; i++)
+    {
+        tabuleiro[i][i] = 3;
+    }
+
+     // Adicionando navio na diagonal secundária
+     for (int i = 0; i < 10; i++) {
+        if (i + (9 - i) == 9) {
+            tabuleiro[i][9 - i] = 3;
+        }
+    }
+    
 
     printf("------------------------\n");
     printf("TABULEIRO BATALHA NAVAL \n");
     printf("------------------------\n");
-    printf("   ");
+    printf("    ");
 
     // Exibe valores do vetor Linha
     for (int i = 0; i < 10; i++)
@@ -54,7 +64,7 @@ int main() {
     // Exibe o tabuleiro
     for (int i = 0; i < 10; i++)
     {
-        printf("%d |", i + 1); // Exibe números das linhas
+        printf("%2d |", i + 1); // Exibe números das linhas
 
         for (int j = 0; j < 10; j++)
         {
