@@ -17,6 +17,30 @@ void desenharCone(int tabuleiro[5][5]) {
     }
 }
 
+void desenharCruz(int tabuleiro[5][5]) {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (j == 2 || i == 2) {
+                tabuleiro[i][j] = 1;
+            } else {
+                tabuleiro[i][j] = 0;
+            }
+        }
+    }
+}
+
+void desenharOctaedro(int tabuleiro[5][5]) {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if ((i == 0 && j == 2) || (i == 1 && j >= 1 && j <= 3) || (i == 2 && j == 2)) {
+                tabuleiro[i][j] = 1;
+            } else {
+                tabuleiro[i][j] = 0;
+            }
+        }
+    }
+}
+
 // Exibir Tabuleiro
 void exibirTabuleiro(int tabuleiro[5][5]) {
     for (int i = 0; i < 5; i++) {
@@ -36,7 +60,7 @@ int main() {
     char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
     int tabuleiro[10][10];
 
-    int tabuleiroCone[5][5];
+    int tabuleiroHabilidades[5][5];
 
     // Inicializando o tabuleiro preenchendo com 0
     for (int i = 0; i < 10; i++)
@@ -123,19 +147,25 @@ int main() {
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 1 1 1 1 1
-    desenharCone(tabuleiroCone);
+    desenharCone(tabuleiroHabilidades);
     printf("Tabuleiro Cone:\n");
-    exibirTabuleiro(tabuleiroCone);
+    exibirTabuleiro(tabuleiroHabilidades);
     
     // Exemplo para habilidade em octaedro:
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 0 0 1 0 0
+    desenharOctaedro(tabuleiroHabilidades);
+    printf("Tabuleiro Octaedro:\n");
+    exibirTabuleiro(tabuleiroHabilidades);
 
     // Exemplo para habilidade em cruz:
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+    desenharCruz(tabuleiroHabilidades);
+    printf("Tabuleiro Cruz:\n");
+    exibirTabuleiro(tabuleiroHabilidades);
 
     return 0;
 }
